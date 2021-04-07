@@ -6,6 +6,29 @@ import socket
 import sys
 import datetime
 
+time.sleep(2)
+print('''⣇⣿⠘⣿⣿⣿⡿⡿⣟⣟⢟⢟⢝⠵⡝⣿⡿⢂⣼⣿⣷⣌⠩⡫⡻⣝⠹⢿⣿⣷
+⡆⣿⣆⠱⣝⡵⣝⢅⠙⣿⢕⢕⢕⢕⢝⣥⢒⠅⣿⣿⣿⡿⣳⣌⠪⡪⣡⢑⢝⣇             
+⡆⣿⣿⣦⠹⣳⣳⣕⢅⠈⢗⢕⢕⢕⢕⢕⢈⢆⠟⠋⠉⠁⠉⠉⠁⠈⠼⢐⢕:
+⡗⢰⣶⣶⣦⣝⢝⢕⢕⠅⡆⢕⢕⢕⢕⢕⣴⠏⣠⡶⠛⡉⡉⡛⢶⣦⡀⠐⣕⢕
+⡝⡄⢻⢟⣿⣿⣷⣕⣕⣅⣿⣔⣕⣵⣵⣿⣿⢠⣿⢠⣮⡈⣌⠨⠅⠹⣷⡀⢱⢕
+⡝⡵⠟⠈⢀⣀⣀⡀⠉⢿⣿⣿⣿⣿⣿⣿⣿⣼⣿⢈⡋⠴⢿⡟⣡⡇⣿⡇⡀⢕
+⡝⠁⣠⣾⠟⡉⡉⡉⠻⣦⣻⣿⣿⣿⣿⣿⣿⣿⣿⣧⠸⣿⣦⣥⣿⡇⡿⣰⢗⢄
+⠁⢰⣿⡏⣴⣌⠈⣌⠡⠈⢻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣬⣉⣉⣁⣄⢖⢕⢕⢕
+⡀⢻⣿⡇⢙⠁⠴⢿⡟⣡⡆⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⣵⣵⣿
+⡻⣄⣻⣿⣌⠘⢿⣷⣥⣿⠇⣿⣿⣿⣿⣿⣿⠛⠻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
+⣷⢄⠻⣿⣟⠿⠦⠍⠉⣡⣾⣿⣿⣿⣿⣿⣿⢸⣿⣦⠙⣿⣿⣿⣿⣿⣿⣿⣿⠟
+⡕⡑⣑⣈⣻⢗⢟⢞⢝⣻⣿⣿⣿⣿⣿⣿⣿⠸⣿⠿⠃⣿⣿⣿⣿⣿⣿⡿⠁⣠
+⡝⡵⡈⢟⢕⢕⢕⢕⣵⣿⣿⣿⣿⣿⣿⣿⣿⣿⣶⣶⣿⣿⣿⣿⣿⠿⠋⣀⣈⠙
+⡝⡵⡕⡀⠑⠳⠿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠿⠛⢉⡠⡲⡫⡪⡪⡣
+db   d8b   db d88888b d88888b d8888b
+88   I8I   88 88'     88'     88  `8D 
+88   I8I   88 88ooooo 88ooooo 88oooY' 
+Y8   I8I   88 88~~~~~ 88~~~~~ 88~~~b. 
+`8b d8'8b d8' 88.     88.     88   8D 
+ `8b8' `8d8'  Y88888P Y88888P Y8888P'
+
+''')
 
 
 def cd():
@@ -20,7 +43,7 @@ def cd():
 
 Current_Date = datetime.datetime.today().strftime ('%d-%b-%Y') 
 
-print("login at:",Current_Date)
+print("login at:",Current_Date,"input help for a list of commands")
 on = True
      
 while on == True:
@@ -52,18 +75,37 @@ while on == True:
         createinp= input("name your file>")
         open(createinp,"w+")
 
-    elif a=="write": 
-        fileed = input("enter file to write>> ")  
-        my_file = open(fileed, "w")
-        filetext = input('')
-        my_file.write(filetext)
-        my_file = open(fileed)
+    #under construction
+    
+    elif a=="write":
+        filename= input("name of file> ")
+        f = open(filename,"w")
+        filetext = input("> ") 
+        f.write(filetext)
 
-        content = my_file.read()
+        f.close()
 
-        my_file.close()
+        g = open(filename,"r")
 
-        print(content)
+        s = g.read()
+        print(s)
+        g.close()
+
+    elif a=="help":
+        print("ls: list files or directories")
+        print("\ncd: change your working directory")
+        print("\ncd-b: go back one directory")
+        print("\nclear: clear da screen")
+        print("\ncreate: create a file and name it!")
+        print("\nwrite: write in a file!")
+        print("\nread: read da file!")
+        print("\nerase: delete the file!")
+        time.sleep(1)
+        print("\nthis project is still under construction 0w0")
+        
+                
+
+    
 
     elif a =="erase": 
         filedel = input("file for deletion> ") 
@@ -79,6 +121,11 @@ while on == True:
 
     else:
         print("no command found.")
+
+    if a=="off":
+        print("Goodbye WEEB!")
+        on = False
+
 
 
     
