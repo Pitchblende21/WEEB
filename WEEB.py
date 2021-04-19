@@ -1,32 +1,32 @@
-
 import os
 import platform
 import time
 import socket
 import sys
 import datetime
+from os import path
 
 time.sleep(2)
-print('''⣇⣿⠘⣿⣿⣿⡿⡿⣟⣟⢟⢟⢝⠵⡝⣿⡿⢂⣼⣿⣷⣌⠩⡫⡻⣝⠹⢿⣿⣷
-⡆⣿⣆⠱⣝⡵⣝⢅⠙⣿⢕⢕⢕⢕⢝⣥⢒⠅⣿⣿⣿⡿⣳⣌⠪⡪⣡⢑⢝⣇             
-⡆⣿⣿⣦⠹⣳⣳⣕⢅⠈⢗⢕⢕⢕⢕⢕⢈⢆⠟⠋⠉⠁⠉⠉⠁⠈⠼⢐⢕:
-⡗⢰⣶⣶⣦⣝⢝⢕⢕⠅⡆⢕⢕⢕⢕⢕⣴⠏⣠⡶⠛⡉⡉⡛⢶⣦⡀⠐⣕⢕
-⡝⡄⢻⢟⣿⣿⣷⣕⣕⣅⣿⣔⣕⣵⣵⣿⣿⢠⣿⢠⣮⡈⣌⠨⠅⠹⣷⡀⢱⢕
-⡝⡵⠟⠈⢀⣀⣀⡀⠉⢿⣿⣿⣿⣿⣿⣿⣿⣼⣿⢈⡋⠴⢿⡟⣡⡇⣿⡇⡀⢕
-⡝⠁⣠⣾⠟⡉⡉⡉⠻⣦⣻⣿⣿⣿⣿⣿⣿⣿⣿⣧⠸⣿⣦⣥⣿⡇⡿⣰⢗⢄
-⠁⢰⣿⡏⣴⣌⠈⣌⠡⠈⢻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣬⣉⣉⣁⣄⢖⢕⢕⢕
-⡀⢻⣿⡇⢙⠁⠴⢿⡟⣡⡆⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⣵⣵⣿
-⡻⣄⣻⣿⣌⠘⢿⣷⣥⣿⠇⣿⣿⣿⣿⣿⣿⠛⠻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
-⣷⢄⠻⣿⣟⠿⠦⠍⠉⣡⣾⣿⣿⣿⣿⣿⣿⢸⣿⣦⠙⣿⣿⣿⣿⣿⣿⣿⣿⠟
-⡕⡑⣑⣈⣻⢗⢟⢞⢝⣻⣿⣿⣿⣿⣿⣿⣿⠸⣿⠿⠃⣿⣿⣿⣿⣿⣿⡿⠁⣠
-⡝⡵⡈⢟⢕⢕⢕⢕⣵⣿⣿⣿⣿⣿⣿⣿⣿⣿⣶⣶⣿⣿⣿⣿⣿⠿⠋⣀⣈⠙
-⡝⡵⡕⡀⠑⠳⠿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠿⠛⢉⡠⡲⡫⡪⡪⡣
+print('''
+⠀⠀  ⣠⣶⡾⠏⠉⠙⠳⢦⡀⠀⠀⠀⢠⠞⠉⠙⠲⡀⠀
+⠀⠀⠀⣴⠿⠏⠀⠀⠀⠀⠀⠀⢳⡀⠀⡏⠀⠀⠀⠀⠀⢷
+⠀⠀⢠⣟⣋⡀⢀⣀⣀⡀⠀⣀⡀⣧⠀⢸⠀⠀⠀⠀⠀ ⡇
+⠀⠀⢸⣯⡭⠁⠸⣛⣟⠆⡴⣻⡲⣿⠀⣸⠀⠀OK⠀ ⡇
+⠀⠀⣟⣿⡭⠀⠀⠀⠀⠀⢱⠀⠀⣿⠀⢹⠀⠀⠀⠀⠀ ⡇
+⠀⠀⠙⢿⣯⠄⠀⠀⠀⢀⡀⠀⠀⡿⠀⠀⡇⠀⠀⠀⠀⡼
+⠀⠀⠀⠀⠹⣶⠆⠀⠀⠀⠀⠀⡴⠃⠀⠀⠘⠤⣄⣠⠞⠀
+⠀⠀⠀⠀⠀⢸⣷⡦⢤⡤⢤⣞⣁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⢀⣤⣴⣿⣏⠁⠀⠀⠸⣏⢯⣷⣖⣦⡀⠀⠀⠀⠀⠀⠀
+⢀⣾⣽⣿⣿⣿⣿⠛⢲⣶⣾⢉⡷⣿⣿⠵⣿⠀⠀⠀⠀⠀⠀
+⣼⣿⠍⠉⣿⡭⠉⠙⢺⣇⣼⡏⠀⠀⠀⣄⢸⠀⠀⠀⠀⠀⠀
+⣿⣿⣧⣀⣿………⣀⣰⣏⣘⣆⣀
+
 db   d8b   db d88888b d88888b d8888b
 88   I8I   88 88'     88'     88  `8D 
 88   I8I   88 88ooooo 88ooooo 88oooY' 
 Y8   I8I   88 88~~~~~ 88~~~~~ 88~~~b. 
 `8b d8'8b d8' 88.     88.     88   8D 
- `8b8' `8d8'  Y88888P Y88888P Y8888P'
+ `8b8' `8d8'  Y88888P Y88888P Y8888P  v.1.2
 
 ''')
 
@@ -71,35 +71,62 @@ while on == True:
     elif a=="cd-b": 
         os.chdir('..')
 
-    elif a=="create":  
-        createinp= input("name your file>")
-        open(createinp,"w+")
+    elif a =="Aaronsoftword":
+        
+        file_path = input("\nChoose file: ")
 
-    #under construction
+        if path.exists(file_path):
+            print("\n\tFile already exists!")
+            ans = input("\nDo you want to use this file? (y/n)\n-> ")
+
+            if ans == 'y' or ans == 'Y':
+                file = open(file_path, "a")
+                ans = input("\nDo you want to erase all content? (y/n)\n-> ")
+
+                if ans == 'y' or ans == 'Y':
+                    print("\n\tErasing...\n")
+                    file.seek(0)
+                    file.truncate()
+
+                else:
+                    pass
+
+            else:
+                exit()
+
+        else:
+            print("\n\tCreating new file...\n")
+            file = open(file_path, "a")
+
+        print("\nPress RETURN to start a new line.\nPress Ctrl + C to save and close.\nPress command z for backspace.\n\n")
     
-    elif a=="write":
-        filename= input("name of file> ")
-        f = open(filename,"w")
-        filetext = input("> ") 
-        f.write(filetext)
+        line_count = 1
 
-        f.close()
+        while line_count > 0:
+            try:
+                line = input("\t" + str(line_count) + " ")
+                file.write(line)
+                file.write('\n')
+                line_count += 1
+            except KeyboardInterrupt:
+                print("\n\n\tClosing...")
+                break
 
-        g = open(filename,"r")
+        file.close()
 
-        s = g.read()
-        print(s)
-        g.close()
+        
 
     elif a=="help":
         print("ls: list files or directories")
         print("\ncd: change your working directory")
         print("\ncd-b: go back one directory")
         print("\nclear: clear da screen")
-        print("\ncreate: create a file and name it!")
-        print("\nwrite: write in a file!")
+        print("\nAaronsoftword:text editor ")
+        
         print("\nread: read da file!")
         print("\nerase: delete the file!")
+        print("\nbye: say bye to WEEB")
+        print("\nANS: network scan")
         time.sleep(1)
         print("\nthis project is still under construction 0w0")
         
@@ -107,27 +134,39 @@ while on == True:
 
     
 
-    elif a =="erase": 
-        filedel = input("file for deletion> ") 
-        os.remove(filedel)
-        print("file successfully deleted")
+    elif a =="erase":
+        try:
+            filedel = input("file for deletion> ") 
+            os.remove(filedel)
+            print("file successfully deleted")
+        except FileNotFoundError:
+            print("sry man, that file doesn't exist XD")
 
     elif a=="read": 
-        fileread = input("file> ")
-        filereade =open(fileread, "r")
-        print(filereade.read())
+        try:
+            fileread = input("file> ")
+            filereade =open(fileread, "r")
+            print(filereade.read())
+        except FileNotFoundError:
+            print("sorry, that isn't a file UwU")
+        
 
 
+    
 
+
+    elif a =="bye":
+        print("bye weeb UwU")
+        time.sleep(1)
+        sys.exit()
+
+    elif a =="ANS":
+        print("still under construction")
+        
     else:
         print("no command found.")
-
-    if a=="off":
-        print("Goodbye WEEB!")
-        on = False
-
-
 
     
             
                 
+
